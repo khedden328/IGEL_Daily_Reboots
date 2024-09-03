@@ -50,7 +50,7 @@ Function Reboot-IGEL {
     [Parameter(Position=0,Mandatory=$true)]
     [string]$DeliveryGroup
     
-    Write-Log "Running on" $ENV:COMPUTERNAME
+    Write-Log "Running on $ENV:COMPUTERNAME"
 
     Write-Log "Connecting to Citrix cloud..."
     try {
