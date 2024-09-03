@@ -54,7 +54,7 @@ Function Reboot-IGEL {
 
     Write-Log "Connecting to Citrix cloud..."
     try {
-        Set-XDCredentials -CustomerId "wa5fqb8d30ef" -SecureClientFile C:\Powershell\secureclient.csv -ProfileType CloudApi -StoreAs default -Verbose
+        Set-XDCredentials -CustomerId "wa5fqb8d30ef" -SecureClientFile C:\Powershell\secureclient.csv -ProfileType CloudApi
         }
     catch {
         Write-Log "Connecting to Citrix cloud failed.  Check API credential file"
