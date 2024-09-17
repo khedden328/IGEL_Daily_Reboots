@@ -16,6 +16,8 @@ param(
     [string]$DeliveryGroup
 )
 
+Enter-PSSession -ComputerName $ENV:COMPUTERNAME
+
 #Define variables and load snap ins
 asnp *citrix*
 $site = "Cloud"
@@ -54,14 +56,7 @@ Function Reboot-IGEL {
 
     Write-Log "Connecting to Citrix cloud..."
     try {
-        $CredentialID = Get-AutomationCredential -Name "S-CTXUtil.ID"
-        $CredentialSecret = Get-AutomationCredential -Name "S-CTXUtil.Secret"
-        $CSVname = $CredentialID.UserName
-        $CSVID = [string]$CredentialID.GetNetworkCredential().Password
-        $CSVSecret = [string]$CredentialSecret.GetNetworkCredential().Password
-        [array]$CSV = "Name,ID,Secret"
-        [array]$CSV += "$CSVname,$CSVID,$CSVSecret"
-        Set-XDCredentials -CustomerId "wa5fqb8d30ef" -SecureClientFile $CSV -ProfileType CloudApi -StoreAs Default
+        Set-XDCredentials -CustomerId "wa5fqb8d30ef" -SecureClientFile "c:\Powershell\secureclient.csv" -ProfileType CloudApi -StoreAs Default
         $prof = Get-XDCredentials -ListProfiles
         Write-Log $prof[0].profiletype
         }
