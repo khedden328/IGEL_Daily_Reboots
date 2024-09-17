@@ -16,7 +16,6 @@ param(
     [string]$DeliveryGroup
 )
 
-Enter-PSSession -ComputerName $ENV:COMPUTERNAME
 
 #Define variables and load snap ins
 asnp *citrix*
